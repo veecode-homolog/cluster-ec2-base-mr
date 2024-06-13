@@ -1,0 +1,36 @@
+values:
+    ### Enviroment Settings
+    environment: spec-test-environment
+    ### Project Settings
+    cluster_name: cluster-ec2-base-mr
+    owner: group:default/admin
+    instance_type: m5.large
+    volume_size: 30
+    keypair_name: platform_kp
+    ### Network Settings
+    vpc_id: vpc-051721395ecf1f7aa
+    domain: spec.platform.vee.codes
+    hostedZoneId: Z08453091DFKAR6BAN261
+    subnet_id: subnet-04dda6147dd9410f1
+    ### Ingress Settings
+    ingress_window: true
+    ingress_type: kong
+    kong_mode: standard
+    external_db: false
+    basic_auth: true
+    certmanager_window: true
+    issuer_type: production
+    email: email@sample.com
+    ### Terraform Backend Settings
+    terraformStateBucketName: veecode-homolog-terraform-state
+    terraformStateBucketRegion: us-east-1
+    infracost: true
+    ### Publish Settings
+    host: github.com
+    destination: veecode-homolog/cluster-ec2-base-mr
+    specPublish: ${{ parameters.specPublish | parseRepoUrl | pick('owner') }}/${{ parameters.specPublish | parseRepoUrl | pick('repo') }}
+    specPublishRepo: ${{ parameters.specPublish | parseRepoUrl | pick('repo') }}
+    specPublishBranch: 
+    ### Observability Settings
+    observability_window: true
+    observability_grafana_url: https://grafana.apr.vee.codes
